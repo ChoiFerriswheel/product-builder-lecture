@@ -4,10 +4,11 @@
   --container-bg: #ffffff;
   --primary-color: #007bff;
   --primary-hover: #0056b3;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   --ball-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   --input-bg: #f8f9fa;
   --input-border: #ddd;
+  --header-bg: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -16,92 +17,127 @@
   --container-bg: #242526;
   --primary-color: #4080ff;
   --primary-hover: #3570e5;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   --input-bg: #3a3b3c;
   --input-border: #4e4f50;
+  --header-bg: #242526;
 }
 
 * {
   box-sizing: border-box;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  min-height: 100vh;
+  font-family: 'Noto Sans KR', 'Inter', sans-serif;
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  padding: 2rem 0;
+  line-height: 1.6;
 }
 
+/* Header & Nav */
+.site-header {
+  background-color: var(--header-bg);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  margin-left: 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 1.5rem;
+}
+
+/* Main Wrapper */
 .main-wrapper {
-  width: 90%;
-  max-width: 600px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2.5rem;
 }
 
 .container {
   background-color: var(--container-bg);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-
-h1, h2 {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-}
-
-h1 { font-size: 1.75rem; }
-h2 { font-size: 1.25rem; }
-
-.controls {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 100;
-}
-
-#theme-toggle {
-  background-color: var(--container-bg);
-  border: 1px solid var(--input-border);
-  color: var(--text-color);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  cursor: pointer;
-  font-size: 0.9rem;
+  padding: 2.5rem;
+  border-radius: 1.25rem;
   box-shadow: var(--shadow);
 }
 
+#generator { text-align: center; }
+.subtitle { color: #65676b; margin-bottom: 2rem; }
+[data-theme="dark"] .subtitle { color: #b0b3b8; }
+
+/* Text Content Sections */
+.text-content {
+  text-align: left;
+}
+
+.text-content h2 { color: var(--primary-color); }
+.text-content h3 { margin-top: 1.5rem; font-size: 1.1rem; }
+.text-content ul { padding-left: 1.2rem; }
+.text-content li { margin-bottom: 0.5rem; }
+
+/* Ad Container */
+.ad-container {
+  width: 100%;
+  min-height: 100px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+/* Buttons */
 #generate, .submit-btn {
   background-color: var(--primary-color);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 0.75rem;
   cursor: pointer;
-  transition: transform 0.1s active, background-color 0.2s;
-  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
   width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
 }
 
-#generate:hover, .submit-btn:hover {
-  background-color: var(--primary-hover);
-}
+#generate:hover, .submit-btn:hover { background-color: var(--primary-hover); }
 
-#generate:active, .submit-btn:active {
-  transform: scale(0.98);
-}
-
+/* Lotto Balls */
 .numbers-container {
   display: flex;
   justify-content: center;
@@ -130,55 +166,73 @@ h2 { font-size: 1.25rem; }
   to { transform: scale(1); opacity: 1; }
 }
 
-/* Inquiry Form Specifics */
-.inquiry-form, .comments-section {
-  text-align: left;
-}
-
-.form-group {
-  margin-bottom: 1.25rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
+/* Form */
+.inquiry-form { text-align: left; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; }
 .form-group input, .form-group textarea {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.9rem;
   border-radius: 0.5rem;
   border: 1px solid var(--input-border);
   background-color: var(--input-bg);
   color: var(--text-color);
   font-family: inherit;
-  font-size: 1rem;
 }
 
-.form-group input:focus, .form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
-}
-
-/* AdSense Container Styling */
-.ad-container {
-  width: 100%;
+/* Footer */
+.site-footer {
+  margin-top: 4rem;
+  padding: 3rem 0;
+  background-color: var(--header-bg);
+  border-top: 1px solid var(--input-border);
   text-align: center;
-  min-height: 90px;
-  overflow: hidden;
-  margin: 1rem 0;
 }
 
-/* Lotto Ball Colors (Korean style) */
+.footer-links { margin-top: 1rem; }
+.footer-links a {
+  margin: 0 0.75rem;
+  text-decoration: none;
+  color: #65676b;
+  font-size: 0.85rem;
+}
+[data-theme="dark"] .footer-links a { color: #b0b3b8; }
+
+/* Modals */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: var(--container-bg);
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 80%;
+  max-width: 600px;
+  max-height: 70vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Lotto Ball Colors */
 .num-1-10 { background-color: #fbc400; color: #000; }
 .num-11-20 { background-color: #69c8f2; color: #fff; }
 .num-21-30 { background-color: #ff7272; color: #fff; }
 .num-31-40 { background-color: #aaaaaa; color: #fff; }
 .num-41-45 { background-color: #b0d840; color: #fff; }
-
-#disqus_thread {
-  margin-top: 1rem;
-}
