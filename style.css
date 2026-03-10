@@ -42,7 +42,7 @@ body {
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .container {
@@ -161,6 +161,15 @@ h2 { font-size: 1.25rem; }
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+/* AdSense Container Styling */
+.ad-container {
+  width: 100%;
+  text-align: center;
+  min-height: 90px;
+  overflow: hidden;
+  margin: 1rem 0;
 }
 
 /* Lotto Ball Colors (Korean style) */

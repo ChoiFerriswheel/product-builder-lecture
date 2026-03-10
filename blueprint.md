@@ -12,10 +12,13 @@ A simple and visually appealing web application that generates 6 unique random n
     - Theme switching (Light/Dark mode) with persistent storage.
     - Interactive UI elements with polished styles.
     - **Partnership Inquiry Form:** Integrated with Formspree for easy communication.
-    - **Disqus Comments:** Integrated at the bottom of the page for community interaction.
+    - **Disqus Comments:** Integrated for community interaction.
+    - **Google AdSense:** Integrated for monetization (Display ads).
 
-## Current Implementation Plan (Disqus Integration)
-1.  **Update HTML:** Add a `<div id="disqus_thread"></div>` at the bottom of the `main-wrapper`.
-2.  **Add Disqus Script:** Include the standard Disqus configuration script.
-3.  **Style Adjustments:** Add proper spacing between the form and the comment section.
-4.  **Commit and Push:** Update the GitHub repository and redeploy to `gh-pages`.
+## Current Implementation Plan (Google AdSense)
+1.  **Update HTML Head:** Add the Google AdSense auto-ads/main script with a placeholder `ca-pub` ID.
+2.  **Add Ad Units:** Place responsive ad unit placeholders:
+    - Between the Lotto Generator and the Partnership Form.
+    - Between the Partnership Form and the Comments section.
+3.  **Style Ad Containers:** Ensure ads are centered and have proper margins to maintain the clean aesthetic.
+4.  **Commit and Push:** Update `main` and `gh-pages` branches.
