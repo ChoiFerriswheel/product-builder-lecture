@@ -1,36 +1,48 @@
 :root {
-  --bg-color: #f8f9fa;
-  --text-color: #212529;
+  --bg-color: #f0f2f5;
+  --text-color: #1c1e21;
   --container-bg: #ffffff;
   --primary-color: #007bff;
   --primary-hover: #0056b3;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   --ball-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --input-bg: #f8f9fa;
+  --input-border: #ddd;
 }
 
 [data-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #f8f9fa;
-  --container-bg: #1e1e1e;
-  --primary-color: #375a7f;
-  --primary-hover: #2b4764;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --bg-color: #18191a;
+  --text-color: #e4e6eb;
+  --container-bg: #242526;
+  --primary-color: #4080ff;
+  --primary-hover: #3570e5;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --input-bg: #3a3b3c;
+  --input-border: #4e4f50;
 }
 
 * {
   box-sizing: border-box;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.main-wrapper {
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .container {
@@ -39,33 +51,36 @@ body {
   border-radius: 1rem;
   box-shadow: var(--shadow);
   text-align: center;
-  max-width: 500px;
-  width: 90%;
 }
 
-h1 {
+h1, h2 {
+  margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
   font-weight: 700;
 }
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.25rem; }
 
 .controls {
   position: fixed;
   top: 1rem;
   right: 1rem;
+  z-index: 100;
 }
 
 #theme-toggle {
-  background: none;
-  border: 1px solid var(--text-color);
+  background-color: var(--container-bg);
+  border: 1px solid var(--input-border);
   color: var(--text-color);
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
   cursor: pointer;
   font-size: 0.9rem;
+  box-shadow: var(--shadow);
 }
 
-#generate {
+#generate, .submit-btn {
   background-color: var(--primary-color);
   color: white;
   border: none;
@@ -75,14 +90,15 @@ h1 {
   border-radius: 0.5rem;
   cursor: pointer;
   transition: transform 0.1s active, background-color 0.2s;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+  width: 100%;
 }
 
-#generate:hover {
+#generate:hover, .submit-btn:hover {
   background-color: var(--primary-hover);
 }
 
-#generate:active {
+#generate:active, .submit-btn:active {
   transform: scale(0.98);
 }
 
@@ -90,7 +106,7 @@ h1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin-top: 2rem;
   min-height: 60px;
 }
@@ -102,16 +118,49 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: white;
   box-shadow: var(--ball-shadow);
-  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 @keyframes popIn {
   from { transform: scale(0); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+/* Inquiry Form Specifics */
+.inquiry-form {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
 }
 
 /* Lotto Ball Colors (Korean style) */
