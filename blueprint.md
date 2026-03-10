@@ -12,10 +12,10 @@ A simple and visually appealing web application that generates 6 unique random n
     - Theme switching (Light/Dark mode) with persistent storage.
     - Interactive UI elements with polished styles.
     - **Partnership Inquiry Form:** Integrated with Formspree for easy communication.
+    - **Disqus Comments:** Integrated at the bottom of the page for community interaction.
 
-## Current Implementation Plan (Partnership Form)
-1.  **Update HTML:** Add a new section below the lotto generator for the inquiry form.
-2.  **Form Fields:** Include Name, Email, and Message fields.
-3.  **Formspree Integration:** Set the form action to `https://formspree.io/f/mzdjezze`.
-4.  **Style the Form:** Use CSS variables to ensure the form looks great in both light and dark modes.
-5.  **Commit and Push:** Update the GitHub repository.
+## Current Implementation Plan (Disqus Integration)
+1.  **Update HTML:** Add a `<div id="disqus_thread"></div>` at the bottom of the `main-wrapper`.
+2.  **Add Disqus Script:** Include the standard Disqus configuration script.
+3.  **Style Adjustments:** Add proper spacing between the form and the comment section.
+4.  **Commit and Push:** Update the GitHub repository and redeploy to `gh-pages`.

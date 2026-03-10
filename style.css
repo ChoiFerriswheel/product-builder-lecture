@@ -131,7 +131,7 @@ h2 { font-size: 1.25rem; }
 }
 
 /* Inquiry Form Specifics */
-.inquiry-form {
+.inquiry-form, .comments-section {
   text-align: left;
 }
 
@@ -169,3 +169,7 @@ h2 { font-size: 1.25rem; }
 .num-21-30 { background-color: #ff7272; color: #fff; }
 .num-31-40 { background-color: #aaaaaa; color: #fff; }
 .num-41-45 { background-color: #b0d840; color: #fff; }
+
+#disqus_thread {
+  margin-top: 1rem;
+}
